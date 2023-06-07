@@ -1,9 +1,10 @@
 package step_definitions;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
+
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;

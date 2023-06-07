@@ -1,9 +1,9 @@
 package step_definitions;
 
 import context.TestContext;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import driver.AndroidDriverInstance;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.OutputType;

@@ -1,15 +1,15 @@
 package step_definitions;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-import org.junit.runner.RunWith;
 
-@RunWith(Cucumber.class)
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
+
+
 @CucumberOptions(
         monochrome = true,
-        tags = {"@Login"},
+        tags = "@Login",
         features = {"src/test/resources"},
-        glue = {"steps", "hooks"},
+        glue = {"steps","hooks"},
         plugin= {
                 "pretty",
                 "html:target/site/cucumber-pretty",
@@ -17,10 +17,10 @@ import org.junit.runner.RunWith;
                 "junit:target/cucumber-report/cucumber.xml",
                 "message:target/cucumber-report/cucumber.ndjson",
                 "html:target/result.html",
-                "me.jvt.cucumber.report.PrettyReports:report"}
-//        snippets = CucumberOptions.SnippetType.CAMELCASE
+                "me.jvt.cucumber.report.PrettyReports:report"},
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 
 )
 
-public class RunCukesTest {
+public class RunCukesTest extends AbstractTestNGCucumberTests {
 }
