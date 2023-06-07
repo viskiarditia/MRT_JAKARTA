@@ -1,10 +1,8 @@
 @Login
-  Feature: Login
-    As a user I want to login website sauce demo
+Feature: Login
 
-  Scenario: Normal Login
-    Given User open the website Official
-    When User input Username and Password in page
+  Scenario: Normal Login , As a user I want to login website MRT Jakarta
+    Given User open the Official Sign In With Google apps MRT Jakarta
     Then User already on landing page MRT JAKARTA
 
 

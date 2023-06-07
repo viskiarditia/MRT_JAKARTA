@@ -1,31 +1,36 @@
 package step_definitions;
 
+import context.TestContext;
+import io.cucumber.java.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
+import driver.AndroidDriverInstance;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+
+import java.io.IOException;
 
 public class Hooks {
-    public static WebDriver webDriver;
+    public static AndroidDriver androidDriver;
+    private final TestContext context;
+
+    public Hooks(TestContext context) {
+        this.context = context;
+    }
 
     @Before
-    public void openBrowser(){
-        ChromeOptions a = new ChromeOptions();
-        a.addArguments("--remote-allow-origins=*");
-        WebDriverManager.chromedriver().setup();
-
-        webDriver = new ChromeDriver();
-        String appUrl = "https://www..com/";
-        webDriver.get(appUrl);
-        webDriver.manage().window().maximize();
+    public void openBrowser() throws IOException {
+        AndroidDriverInstance androidDriverInstance = new AndroidDriverInstance();
+        androidDriver = androidDriverInstance.initialize();
+        context.androidDriver = androidDriver;
     }
 
     @After
-    public void closeBrowser(){
-        webDriver.quit();
+    public void closeBrowser(Scenario scenario) {
+        scenario.attach(((TakesScreenshot) androidDriver).getScreenshotAs(OutputType.BYTES),
+                "image/png", "Emulator-test");
+        androidDriver.quit();
     }
-
 }
